@@ -1,9 +1,10 @@
 # wine-build-script
 
-Script for building Wine on 64-bit Ubuntu 18.04 using Docker container.
+Script for building Wine on 64-bit Ubuntu 18.04.
 
-64-bit Wine is built on the host system (64-bit Ubuntu 18.04) and
-32-bit Wine is built on the Docker container (32-bit Ubuntu 18.04).
+Resulting Wine build will support 32-bit and 64-bit applications.
+The host system (64-bit Ubuntu 18.04) running the script builds 64-bit Wine and
+Docker container (32-bit Ubuntu 18.04) builds 32-bit Wine.
 
 ## Usage
 
