@@ -1,0 +1,19 @@
+FROM i386/ubuntu:18.04
+
+COPY ./wine-build-script.sh /wine-build-script.sh
+
+WORKDIR /
+
+RUN sed -i '/deb-src.*universe/s/^# //' /etc/apt/sources.list && \
+    apt update && \
+    apt upgrade -y && \
+    apt-get -y build-dep wine-stable
+
+# Script replaces proper UID and GID values here.
+USER REPLACE-THIS-UID:REPLACE-THIS-GID
+
+ENV WINE_BUILD_SCRIPT_DIR=/wine-build-script
+ENV WINE_BUILD_SCRIPT_ARGS=""
+ENV SCRIPT_DOCKER_MODE_ENABLED=1
+
+CMD ["bash", "-c", "/wine-build-script.sh $WINE_BUILD_SCRIPT_ARGS; exit"]
